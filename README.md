@@ -1,4 +1,4 @@
-# NYC-Taxi-Trip-Analysis
+# Analyzing traffic in NYC 
 
 Goal:
 
