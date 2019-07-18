@@ -12,6 +12,6 @@ Files:
   
 * Travel_Time_Predictor.R:
 
-  * Using a linear SVM, this script predicts travel times from one point to another within the city at a given time of the day. 
+  * Using a linear SVM, this script predicts travel times from one point to another at a given time of the day 
   
 Please find more information in "Case Study - Traffic in NYC.ppt"
