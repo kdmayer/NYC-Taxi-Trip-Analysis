@@ -126,7 +126,7 @@ However, it appears to be that our SVM model has been able to derive some meanin
 
 ![SVM_2](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/PredictedVsObservedTripDuration_1.png)
 
-Fig. 7: Visualizing the relation between predicted and observed trip duration
+Fig. 7: Visualizing the relation between predicted and observed trip duration.
 
 Looking at the MAE and the correlation coefficient, we can conclude that our predictions for trip_duration are on average 375 seconds off. This corresponds to an estimation error of about 6 minutes. Althought we can see a clear linear relationship between predicted and observed trip durations in the plot above, the computed correlation coefficient reaches only 18.8% which is indeed a positive relationship, but a very weak one.
 
@@ -137,7 +137,7 @@ Fig. 8: Evaluating SVM performance via MAE and correlation coefficient.
 
 Encouraged by the first results, we decided to continue with our SVM approach by taking into account the effect of outliers in the data, i.e. by removing erroneous or unrealistic observations in our dataset. Looking at the boxplot of trip duration records, we decided to remove all trip_duration values that were above the upper adjacent value in the boxplot, exceeding approximately 5000 seconds. 
 
-![SVM_3](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/TravelTimePred_SVM_2.png)
+![SVM_3](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/TravelTimePred.png)
 
 Fig. 9: Summary statistics after removing outliers (left). Relationship between predicted and observed trip durations (right).
 
