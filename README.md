@@ -14,11 +14,11 @@ Files:
 
   * Using a linear SVM, this script predicts travel times from one point to another at a given time of the day 
   
-Please find more information in "Case Study - Traffic in NYC.ppt"
+Please find more information below and in "Case Study - Traffic in NYC.ppt"
 
 # Chapter 1: Dataset Description
 
-In a first step, the given dataset of taxi trips in New York City has been filtered to one day, i.e. January 12th, 2017. In order to understand customer behavior and the local circumstances better, we have calculated how much time (in seconds) each trip actually took (new feature: trip_duration) and added another feature by computing the average miles per hour of a trip by dividing a trip’s length by its duration (new feature: mph). The numbers below show summary statistics for some preselected features in our dataset and will help us to get a better understanding of what we are looking at before starting our model-based analysis. Hence, by describing and evaluating the summary statistics, we try to understand some behavioral patterns of NYC’s residents when they hail a taxi.
+In a first step, the given dataset of taxi trips in New York City was filtered to one day, i.e. January 12th, 2017, to obtain a quick overview on potential patterns in the massive dataset from a smaller sample. In order to understand customer behavior and the local circumstances better, we have calculated how much time (in seconds) each trip actually took (new feature: trip_duration) and added another feature by computing the average miles per hour of a trip by dividing a trip’s length by its duration (new feature: mph). The numbers below show summary statistics for some preselected features in our dataset and will help us to get a better understanding of what we are looking at before starting our model-based analysis. Hence, by describing and evaluating the summary statistics, we try to understand some behavioral patterns of NYC’s residents when they hail a taxi.
 
 * Trip Duration:
 
@@ -63,9 +63,11 @@ As introduced in the lecture and assignments, a common distance metric used for 
 As all clustering algorithms, the Gower distance establishes some notion of similarity between distinct observations in order to form partitions. The Gower distance thereby utilizes an intuitive approach. In a nutshell, every feature can have its own particular distance metric that works well for that type. Afterwards, computed distances are scaled to fall between zero and one and are eventually combined by a linear combination of weights, e.g. a simple average, to create the final distance matrix.
 
 * Choosing a clustering algorithm:
+
 Similar to the k-means clustering algorithm that we have learnt throughout the course and its assignments, we decided to use a method known as k-medoids clustering. K-medoids clustering is typically used when one’s clustering approach cannot rely on Euclidean distance metrics, e.g. because there are non-continuous features. Medoids are inherently similar to the concept of means or centroids, but generally need to be members of the data set. A medoid is thereby defined as a representative object of a cluster whose average dissimilarity to all other object in the cluster is minimal. The respective realization of k-medoid clustering is known as Partitioning Around Medoids (PAM).
 
-* Selecting the number of clusters
+* Selecting the number of clusters:
+
 Selecting an appropriate amount of cluster centers k is more art than science. In the lecture, we spoke about two approaches on how to determine the number of cluster centers.
 The first approach was to use a rule of thumb, which determines the number of clusters k by the following formula: 𝑘=𝑠𝑞𝑟𝑡(𝑛/2)
 
