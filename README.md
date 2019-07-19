@@ -118,22 +118,46 @@ Using black-box methods, i.e. Support Vector Machines, is typically an iterative
 
 Since we did not know whether SVMs could deal with date and factor variables, we started off without any further data pre-processing to get some immediate results which would allow us to see whether an SVM approach could be a viable option or whether we should start by using a different approach without wasting much time.
 Below, the figure on the left depicts the summary statistics comparing predicted travel time to observed travel time in the testing data. We observe negative values for travel_time_pred, which does not make sense. We also observe significant outliers when looking at the maximum value of travel_time_test. The magnitude of these outliers can be better understood by examining the boxplot on the right which depicts the distribution of the variable trip_duration in the randomly selected dataset of 10.000 observations It becomes clear that although most values are close together, there are some significant outliers which exceed 80,000 seconds, i.e. approximately 23 hours.
+
+![SVM_1](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/TravelTimePred_SVM_1.PNG)
+Fig. 6: Determining whether SVM is applicable (left). Detecting outliers (right) 
+
 However, it appears to be that our SVM model has been able to derive some meaningful patterns from the features provided and is therefore a viable option worth pursuing. This conclusion can be validated by plotting travel time predictions against the travel times recorded in the testing data. We are able to observe a positive correlation between predicted and observed trip durations for the testing values. However, this relationship is adversely affected by the outliers in the dataset as we can see when accounting for the mean average error and the respective correlation coefficient.
+
+![SVM_2](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/PredictedVsObservedTripDuration_1.png)
+Fig. 7: Visualizing the relation between predicted and observed trip duration
+
 Looking at the MAE and the correlation coefficient, we can conclude that our predictions for trip_duration are on average 375 seconds off. This corresponds to an estimation error of about 6 minutes. Althought we can see a clear linear relationship between predicted and observed trip durations in the plot above, the computed correlation coefficient reaches only 18.8% which is indeed a positive relationship, but a very weak one.
 
 ![MAE_1](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/SVM_MAE_COR_1.png)
+Fig. 8: Evaluating SVM performance via MAE and correlation coefficient
 
 * Second iteration:
 
-Encouraged by the first results, we decided to continue with our SVM approach by taking into account the effect of outliers in the data, i.e. by removing erroneous or unrealistic observations in our dataset. Looking at the boxplot of trip duration records, we decided to remove all trip_duration values that were above the upper adjacent value in the boxplot, exceeding approximately 5000 seconds. After discarding outliers in the dataset, our model’s performance improved significantly. The MAE shrinked from 375 seconds to 239 seconds, i.e. less than 4 minutes, and the correlation coefficient increased strongly, i.e. from 18.8% to 82.4%, depicting a strong positive linear relationship between predicted and observed trip durations.
+Encouraged by the first results, we decided to continue with our SVM approach by taking into account the effect of outliers in the data, i.e. by removing erroneous or unrealistic observations in our dataset. Looking at the boxplot of trip duration records, we decided to remove all trip_duration values that were above the upper adjacent value in the boxplot, exceeding approximately 5000 seconds. 
 
-![MAE_2](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/SVM_MAE_COR_2.png)
+![SVM_3](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/TravelTimePred_SVM_2.png)
+Fig. 8: Summary statistics after removing outliers
+
+![SVM_4](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/PredictedVsObservedTripDuration_2.png)
+Fig. 9: Relationship between predicted and observed trip durations
+
+After discarding outliers in the dataset, our model’s performance improved significantly. The MAE shrinked from 375 seconds to 239 seconds, i.e. less than 4 minutes, and the correlation coefficient increased strongly, i.e. from 18.8% to 82.4%, depicting a strong positive linear relationship between predicted and observed trip durations.
+
+![SVM_5](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/SVM_MAE_COR_2.png)
+Fig. 10: Model performance
 
 * Third iteration:
 
-Although our predicted trip durations improved significantly after removing outliers, these predictions still had some flaws. Therefore, we proceeded by prohibiting negative time value predictions, as they do not make any sense, and replaced the linear “vanilladot” kernel with a non-linear alternative, i.e. an “rbfdot” kernel. When re-running the model, our results improved to a level of accuracy needed for real-world applications and performed notably better than Google Map’s predicted trip duration in the introductory example of existing travel time predictions. The final model achieves a mean average error (MAE) of less than 180 seconds, i.e. less than 3 minutes and exhibits a correlation coefficient greater than 0.9, indicating a very strong linear relationship between predicted and observed trip durations in the testing set. Moreover, comparing the MAE to the range of values in our testing set, i.e. 179 seconds to 4974 seconds, the SVM performance is quite on point.
+Although our predicted trip durations improved significantly after removing outliers, these predictions still had some flaws. Therefore, we proceeded by prohibiting negative time value predictions, as they do not make any sense, and replaced the linear “vanilladot” kernel with a non-linear alternative, i.e. an “rbfdot” kernel. When re-running the model, our results improved to a level of accuracy needed for real-world applications and performed notably better than Google Map’s predicted trip duration in the introductory example of existing travel time predictions. 
+
+![SVM_6](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/TravelTimePred_SVM_3.PNG)
+Fig. 11: Results for appyling non-linear rbfdot kernel
+
+The final model achieves a mean average error (MAE) of less than 180 seconds, i.e. less than 3 minutes and exhibits a correlation coefficient greater than 0.9, indicating a very strong linear relationship between predicted and observed trip durations in the testing set. Moreover, comparing the MAE to the range of values in our testing set, i.e. 179 seconds to 4974 seconds, the SVM performance is quite on point.
 
 ![MAE_3](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/SVM_MAE_COR_3.png)
+Fig. 12: Final model performance
 
 ## Predicting trip duration with an Artificial Neural Network (ANN)
 
@@ -155,6 +179,7 @@ Before training our ANN, we normalized our remaining input variables, i.e. trip_
 * Results:
 
 ![ANN_1](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/ANN_Results_1.png)
+Fig. 13: Initial ANN performance
 
 Examining our results, it became clear that our ANN model was not able to derive any meaningful or useful patterns from the training data that it could apply when predicting testing observations.
 
@@ -163,10 +188,12 @@ This was due to a logical flaw in the design for our ANN model. Converting almos
 When trying to improve our model performance, we decided to reduce the number of input features and deleted the feature variable PULocationID. This resulted in an even worse performance.
 
 ![ANN_2](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/ANN_Results_2.png)
+Fig. 14: Adjusted ANN model performance, part 1
 
 Lastly, we decided to use only trip_length as a predictor for our travel time estimate. As before, our ANN was not able to derive meaningful patterns, resulting in poor testing performance that indicated that we should use other models, e.g. SVM, or even simpler, non-black-box approaches, such as a simple regression analysis.
 
 ![ANN_3](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/ANN_Results_3.png)
+Fig. 15: Adjusted ANN model performance, part 2
 
 # Chapter 4: Conclusion
 
