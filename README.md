@@ -21,6 +21,7 @@ Please find more information below and in "Case Study - Traffic in NYC.ppt"
 In a first step, the given dataset of taxi trips in New York City was filtered to one day, i.e. January 12th, 2017, to obtain a quick overview on potential patterns in the massive dataset from a smaller sample. In order to understand customer behavior and the local circumstances better, we have calculated how much time (in seconds) each trip actually took (new feature: trip_duration) and added another feature by computing the average miles per hour of a trip by dividing a trip’s length by its duration (new feature: mph). The numbers below show summary statistics for some preselected features in our dataset and will help us to get a better understanding of what we are looking at before starting our model-based analysis. Hence, by describing and evaluating the summary statistics, we try to understand some behavioral patterns of NYC’s residents when they hail a taxi.
 
 ![Summary Statistics](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/SummaryStatistics.png)
+Fig. 1: Summary statistics for taxi trips in NYC on January 12th, 2017
 
 * Trip Duration:
 
@@ -30,6 +31,7 @@ The following map shows a 1.5 miles trip from the Empire State Building to the M
 Thus, by building a statistical model that is capable of predicting taxi trip durations accurately, we might give people a better understanding of their transport options and could incentivize more people to use public transport options which could potentially reduce the likelihood of traffic congestions, especially during rush hour. Such models will be evaluated during Chapter 2, where we built travel time prediction models based on SVM and ANN algorithms.
 
 ![TripDuration_Car](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/GoogleMapsTravelTimePrediction.PNG)
+Fig. 2: Predicted trip durations for car (left) and public transport (right). 
 
 * Passenger Count:
 
@@ -82,18 +84,21 @@ The second approach we were taught in the lecture was to use the so-called elbow
 * Cluster interpretation:
 
 ![ClusterInterpretation](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/ClusterInterpretation.PNG)
+Fig. 3: Cluster results for k = 5 cluster centers.
 
 When examining our cluster partition as a whole, one observation that we can make is that Midtown Manhattan, i.e. areas south of Central Park, are very popular pick up location IDs, encompassing IDs such as 161, 162, 186, 170 and 234, while Upper Manhattan is a common drop off location ID, encompassing IDs such as 236, 237, and 239. This could be due to the fact that many people who visit or work in Midtown Manhattan commute back to their residential area or hotel by cab. However, if this pattern is mainly due to commuters, we should probably see a similar behavior in the reverse direction, which is not the case here. This might be due to the fact that we selected at random only a small sample of 1000 observations from January 12th, 2017. Thus, our distribution of selected observations might be skewed towards the evening hours, which could explain the observed pattern, as people working in Midtown Manhattan, e.g. highly paid employees in the financial industry, might return home from work by cab.
 
 Comparing the clusters with each other, it is interesting to see that one cluster, namely cluster 1, is characterized by far higher average mph values than all the other clusters. This might indicate that for the respective pick up and drop off locations, the existing road infrastructure is able to handle the traffic volume comparatively well. When diving deeper into cluster 1, we realize that the two most common pick up locations are Midtown East Manhattan (ID 162) and LaGuardia Airport in Queens (ID 138), while the most common drop off locations are Manhattan’s Upper East and West Side (ID 236 and ID 239). As a result, we could hypothesize that the high values for average mph in cluster one might be due to a fast connection between LaGuardia Airport and Manhattan’s Upper Side. This hypothesis gains additional plausibility, if we look at a Google Maps route connecting the respective districts with LaGuardia. Apparently, LaGuardia is connected to Manhattan via the Grand Central Parkway, a highway-like route that steers traffic from Queens to the northern part of Manhattan and thereby avoids the streets in central Manhattan that are most prone to gridlocks.
 
 ![GrandCentralParkway](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/GrandCentralParkway.png)
+Fig. 4: Grand Central Parkway connecting LaGuardia with Manhattan.
 
 In contrast to cluster 1, where 75% of all taxi trips achieve a speed of 17.5 mph on average, cluster 4 is characterized by the slowest traffic speed, with 75% of trips not exceeding 6.8 mph on average. Diving deeper into the cluster, we are able to obtain information with respect to the most frequented location IDs. By far the most frequented location IDs are 162, 186, 234, and 237. If we mark these areas on the map of Manhattan with red ellipses, it becomes obvious that the districts most prone to traffic congestion and gridlocks are located in Midtown Manhattan, which can also be validated by looking at the other clusters, which draw a similar picture about the traffic situation in NYC.
 Based on the information provided in cluster 2,3, and 4, we can further narrow down areas that are especially affected by traffic congestion. As an example, when examining cluster 2, one of the hotspots for traffic jams can probably be found on the route from district ID 170 to 237. Such information can be vital for city planners and authorities, as it allows them to focus their infrastructure projects on areas that suffer from a lack of capacity and thereby slow down the traffic in a much wider area of the city or even lead to traffic jams in other areas, because people have to circumvent specific areas such as Midtown Manhattan.
 One way to tackle such a lack of road capacity could be to give people, in particular commuters, incentives to use public transportation, e.g. by reduced ticket prices, a higher frequency of rides, or by providing shuttle services. Extending the given road infrastructure and its capacity is tough and costly, especially in areas like Manhattan where space is densely populated and occupied.
 
 ![TaxiZones](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/nycTaxiZones.PNG)
+Fig. 5: Areas prone to traffic congestions marked by red ellipse.
 
 # Chapter 3: Black-box methods to predict trip duration
 
