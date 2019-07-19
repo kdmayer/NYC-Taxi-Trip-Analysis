@@ -102,7 +102,7 @@ One way to tackle such a lack of road capacity could be to give people, in parti
 
 After using a clustering algorithm to identify districts and their respective connections that are especially prone to traffic congestions, we recommended city planners and authorities to incentivize their residents, especially commuters, to use public transport options. An important tool for such an incentive-based approach could be to show commuters how much time they could save by not being trapped in the rush hour traffic. Thus, we decided to build some rudimentary models that could predict or estimate a trip’s travel time based on a given pick up ID, drop off ID, pickup date and time, and trip length. By building such models, we hope to give people a better sense of their transportation options and how long they will take respectively. Although such services already exist in the form of navigation systems or Google Maps, which integrate even real-time information, we thought that building a statistical model based on the algorithms which we have learnt in class could provide additional information, as it would allow people to estimate future travel times more accurately than many real-time based services that exist nowadays and can only give vague travel time predictions for future trips (see Chapter 1, Google’s trip estimation). If we would have more time and resources, one could vary the input variables to determine which marginal changes in location result in the steepest increase in predicted travel time. These additional hints could help to determine streets and routes that are particularly affected by traffic congestion and suffer from a lack of capacity.
 
-* Predicting trip duration with Support Vector Machine (SVM):
+## Predicting trip duration with Support Vector Machine (SVM):
 
 In our first approach to build a model in order to predict trip duration, we used an SVM that was trained on pick up date and time (“tpep_pickup_datetime”), trip distance (“trip_distance”), pick up location (“PULocationID”), and drop off location (“DOLocationID”) to predict a trip’s duration (“trip_duration”). We started off by converting the tpep_pickup_datetime column into a column of date objects and converted the PULocationID and DOLocationID into factors since there is no inherent order in their IDs. Before training our SVM, we randomly selected 10,000 observations from January 12th, 2017 out of NYC’s taxi trip dataset. Out of these, 7,000 were used for training in order to identify patterns and 3,000 were used for testing. Selecting only a relatively small subset of the overall data helped us to run our analysis faster. When having more computational power and time, we would have tested our findings on the larger dataset and on different dates.
 
@@ -129,7 +129,7 @@ Although our predicted trip durations improved significantly after removing outl
 
 ![MAE_3](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/SVM_MAE_COR_3.png)
 
-# Predicting trip duration with an Artificial Neural Network (ANN)
+## Predicting trip duration with an Artificial Neural Network (ANN)
 
 * Data pre-processing and training:
 
