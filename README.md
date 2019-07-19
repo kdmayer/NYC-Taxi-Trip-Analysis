@@ -1,10 +1,10 @@
 # Analyzing traffic in NYC 
 
-Goal:
+## Goal:
 
 Analyze NYC's taxi trips in order to derive guidelines to improve transportation within the city
 
-Files:
+## Files:
 
 * Congestion_Areas.R:
 
@@ -29,8 +29,7 @@ Diving deeper into the trip duration numbers, 11 minutes as a median trip durati
 The following map shows a 1.5 miles trip from the Empire State Building to the Modern Museum of Art. The predicted trip duration of Google Maps is between 10 and 26 minutes, an estimate that highlights the uncertainty that passengers are affected by when using a cab in NYC. The second map shows the competing subway trip that is offered for this route. The same trip could be accomplished in 15 minutes. This means that a subway trip could be 11 minutes faster or 5 minutes longer, excluding waiting times at the platform or when calling taxi.
 Thus, by building a statistical model that is capable of predicting taxi trip durations accurately, we might give people a better understanding of their transport options and could incentivize more people to use public transport options which could potentially reduce the likelihood of traffic congestions, especially during rush hour. Such models will be evaluated during Chapter 2, where we built travel time prediction models based on SVM and ANN algorithms.
 
-![TripDuration_Car](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/GoogleMapsPredictionCar.png)
-![TripDuration_PT](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/GoogleMapsPredictionPT.png)
+![TripDuration_Car](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/GoogleMapsTravelTimePrediction.PNG)
 
 * Passenger Count:
 
