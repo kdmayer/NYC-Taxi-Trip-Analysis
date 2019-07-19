@@ -84,6 +84,7 @@ The second approach we were taught in the lecture was to use the so-called elbow
 * Cluster interpretation:
 
 ![ClusterInterpretation](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/ClusterInterpretation.PNG)
+
 Fig. 3: Cluster results for k = 5 cluster centers.
 
 When examining our cluster partition as a whole, one observation that we can make is that Midtown Manhattan, i.e. areas south of Central Park, are very popular pick up location IDs, encompassing IDs such as 161, 162, 186, 170 and 234, while Upper Manhattan is a common drop off location ID, encompassing IDs such as 236, 237, and 239. This could be due to the fact that many people who visit or work in Midtown Manhattan commute back to their residential area or hotel by cab. However, if this pattern is mainly due to commuters, we should probably see a similar behavior in the reverse direction, which is not the case here. This might be due to the fact that we selected at random only a small sample of 1000 observations from January 12th, 2017. Thus, our distribution of selected observations might be skewed towards the evening hours, which could explain the observed pattern, as people working in Midtown Manhattan, e.g. highly paid employees in the financial industry, might return home from work by cab.
@@ -98,6 +99,7 @@ Based on the information provided in cluster 2,3, and 4, we can further narrow d
 One way to tackle such a lack of road capacity could be to give people, in particular commuters, incentives to use public transportation, e.g. by reduced ticket prices, a higher frequency of rides, or by providing shuttle services. Extending the given road infrastructure and its capacity is tough and costly, especially in areas like Manhattan where space is densely populated and occupied.
 
 ![TaxiZones](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/nycTaxiZones.PNG)
+
 Fig. 5: Areas prone to traffic congestions marked by red ellipse.
 
 # Chapter 3: Black-box methods to predict trip duration
