@@ -27,8 +27,6 @@ taxi_trips$tpep_pickup_datetime  <- as.POSIXct(taxi_trips$tpep_pickup_datetime, 
 taxi_trips$PULocationID <- as.factor(taxi_trips$PULocationID)
 taxi_trips$DOLocationID <- as.factor(taxi_trips$DOLocationID)
 
-#"tpep_pickup_datetime","tpep_dropoff_datetime",
-
 taxi_trips <- select(taxi_trips,"mph","PULocationID","DOLocationID")
 
 #boxplot(taxi_trips$mph)
@@ -61,7 +59,6 @@ taxi_trips[which(gower_mat == max(gower_mat[gower_mat != max(gower_mat)]),
 #}
 
 # Plot sihouette width (higher is better)
-
 #plot(1:10, sil_width,xlab = "Number of clusters",ylab = "Silhouette Width")
 #lines(1:10, sil_width)
 
