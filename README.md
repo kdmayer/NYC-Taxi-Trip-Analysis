@@ -98,7 +98,7 @@ In contrast to cluster 1, where 75% of all taxi trips achieve a speed of 17.5 mp
 Based on the information provided in cluster 2,3, and 4, we can further narrow down areas that are especially affected by traffic congestion. As an example, when examining cluster 2, one of the hotspots for traffic jams can probably be found on the route from district ID 170 to 237. Such information can be vital for city planners and authorities, as it allows them to focus their infrastructure projects on areas that suffer from a lack of capacity and thereby slow down the traffic in a much wider area of the city or even lead to traffic jams in other areas, because people have to circumvent specific areas such as Midtown Manhattan.
 One way to tackle such a lack of road capacity could be to give people, in particular commuters, incentives to use public transportation, e.g. by reduced ticket prices, a higher frequency of rides, or by providing shuttle services. Extending the given road infrastructure and its capacity is tough and costly, especially in areas like Manhattan where space is densely populated and occupied.
 
-    ![TaxiZones](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/nycTaxiZones.PNG)
+   ![TaxiZones](https://github.com/kdmayer/TaxiTripAnalysis/blob/master/nycTaxiZones.PNG)
 
 Fig. 5: Areas prone to traffic congestions marked by red ellipse.
 
