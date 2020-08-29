@@ -1,3 +1,5 @@
+This was the result of a course project which I conducted in 2018.
+
 # Analyzing traffic in NYC 
 
 ## Goal:
